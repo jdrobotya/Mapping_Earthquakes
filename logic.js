@@ -18,11 +18,16 @@ let baseMaps = {
   Street: streets,
   Dark: dark
 };
-// Create the map object with center and zoom level.
-let map = L.map('mapid').setView([30, 30], 2);
+
+// Create the map object with center, zoom level and default layer.
+let map = L.map('mapid', {
+  center: [30, 30],
+  zoom: 2,
+  layers: [streets]
+});
 
 // Pass our map layers into our layer control 
-L.control.layers(baseMap).addTo(map);
+L.control.layers(baseMaps).addTo(map);
 
 // Accessing the airport GeoJSON URL
 let airportData = 'https://raw.githubusercontent.com/jdrobotya/Mapping_Earthquakes/main/majorAirports.json';
